@@ -1,0 +1,574 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample service for managing booking requests",
+        "title": "rideCreation",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Yuso",
+            "email": "salwa@craftfoundry.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/companies/{saas_company_id}/{customer_id}": {
+            "get": {
+                "description": "Get description of companies related to front_end_user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "companies"
+                ],
+                "summary": "Get details of companies",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the company",
+                        "name": "saas_company_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id of the customer",
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Company"
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/{saas_company_id}/{customer_id}/{company_id}": {
+            "get": {
+                "description": "Get description of companies related to front_end_users by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "companies"
+                ],
+                "summary": "Get details of all companies",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id of the company",
+                        "name": "saas_company_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id of the customer",
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id of the company",
+                        "name": "company_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Company"
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/{saas_company_id}": {
+            "get": {
+                "description": "Get description of all customers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Get details of all customers",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the company ",
+                        "name": "saas_company_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Customer"
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/{saas_company_id}/{id_customer}": {
+            "get": {
+                "description": "Get description of all customers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Get details of all customers",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the company ",
+                        "name": "saas_company_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id of the customer ",
+                        "name": "id_customer",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Customer"
+                        }
+                    }
+                }
+            }
+        },
+        "/passenger/{customer_id}": {
+            "get": {
+                "description": "Get description of all passengers related to front_end_user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "passengers"
+                ],
+                "summary": "Get details of all passengers",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the customers",
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Passengers"
+                        }
+                    }
+                }
+            }
+        },
+        "/passenger/{customer_id}/{id}": {
+            "get": {
+                "description": "Get description of passengers related to front_end_user by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "passengers"
+                ],
+                "summary": "Get details of all passengers",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the customers",
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id of the passenger",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Passengers"
+                        }
+                    }
+                }
+            }
+        },
+        "/rides/{saas_company_id}/{customer_id}/{state}": {
+            "get": {
+                "description": "Get description of upcoming and current rides",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rides"
+                ],
+                "summary": "Get details of all rides",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the company",
+                        "name": "saas_company_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "customer_id of the companies",
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "id of the companies",
+                        "name": "state",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.Requests"
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicule/{saas_officeID}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Get",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of the saas_office",
+                        "name": "saas_officeID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Models.VehicleType"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Models.Company": {
+            "type": "object",
+            "properties": {
+                "company_address": {
+                    "type": "string"
+                },
+                "company_siren": {
+                    "type": "string"
+                },
+                "default_comment": {
+                    "type": "string"
+                },
+                "enable_send_invoice": {
+                    "type": "string"
+                },
+                "front_saas_company_id": {
+                    "type": "string"
+                },
+                "id_front": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "payement_type": {
+                    "type": "string"
+                },
+                "payment_period_type": {
+                    "type": "string"
+                },
+                "receive_email": {
+                    "type": "string"
+                }
+            }
+        },
+        "Models.Customer": {
+            "type": "object",
+            "properties": {
+                "Comment": {
+                    "type": "string"
+                },
+                "default_comment": {
+                    "type": "string"
+                },
+                "default_passenger_id": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "front_end_user_id": {
+                    "type": "integer"
+                },
+                "id_customer": {
+                    "type": "integer"
+                },
+                "landline_number": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "referral_code": {
+                    "type": "string"
+                },
+                "saas_company_id": {
+                    "type": "integer"
+                },
+                "second_email": {
+                    "type": "string"
+                },
+                "send_pdf_email": {
+                    "type": "string"
+                }
+            }
+        },
+        "Models.Passengers": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "string"
+                },
+                "customer_id": {
+                    "type": "integer"
+                },
+                "default_comment": {
+                    "type": "string"
+                },
+                "default_favorite_id": {
+                    "type": "integer"
+                },
+                "deleted": {
+                    "type": "boolean"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "locale": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "send_invoice": {
+                    "type": "boolean"
+                },
+                "show_price": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "Models.Requests": {
+            "type": "object",
+            "properties": {
+                "Comment": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Referral_code": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer"
+                },
+                "customer_id": {
+                    "type": "integer"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "id_ride": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "passenger_id": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "ride_id": {
+                    "type": "integer"
+                },
+                "saas_company_id": {
+                    "type": "integer"
+                },
+                "saas_office_id": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            }
+        },
+        "Models.VehicleType": {
+            "type": "object",
+            "properties": {
+                "complement": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "designation": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "isAvailable": {
+                    "type": "boolean"
+                },
+                "kmPrice": {
+                    "type": "integer"
+                },
+                "lat": {
+                    "type": "integer"
+                },
+                "logoVehicle": {
+                    "type": "string"
+                },
+                "long": {
+                    "type": "integer"
+                },
+                "maxPlace": {
+                    "type": "integer"
+                },
+                "minPrice": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pickupPrice": {
+                    "type": "integer"
+                },
+                "saasCompanyID": {
+                    "type": "integer"
+                },
+                "saas_officeID": {
+                    "type": "integer"
+                },
+                "typeCode": {
+                    "type": "integer"
+                },
+                "types": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "zip_code": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

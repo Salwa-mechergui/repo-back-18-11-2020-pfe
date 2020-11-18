@@ -1,0 +1,381 @@
+basePath: /
+definitions:
+  Models.Company:
+    properties:
+      company_address:
+        type: string
+      company_siren:
+        type: string
+      default_comment:
+        type: string
+      enable_send_invoice:
+        type: string
+      front_saas_company_id:
+        type: string
+      id_front:
+        type: string
+      name:
+        type: string
+      payement_type:
+        type: string
+      payment_period_type:
+        type: string
+      receive_email:
+        type: string
+    type: object
+  Models.Customer:
+    properties:
+      Comment:
+        type: string
+      default_comment:
+        type: string
+      default_passenger_id:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      front_end_user_id:
+        type: integer
+      id_customer:
+        type: integer
+      landline_number:
+        type: string
+      last_name:
+        type: string
+      phone_number:
+        type: string
+      referral_code:
+        type: string
+      saas_company_id:
+        type: integer
+      second_email:
+        type: string
+      send_pdf_email:
+        type: string
+    type: object
+  Models.Passengers:
+    properties:
+      company_id:
+        type: string
+      customer_id:
+        type: integer
+      default_comment:
+        type: string
+      default_favorite_id:
+        type: integer
+      deleted:
+        type: boolean
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      language:
+        type: string
+      last_name:
+        type: string
+      locale:
+        type: string
+      phone_number:
+        type: string
+      send_invoice:
+        type: boolean
+      show_price:
+        type: string
+      type:
+        type: string
+    type: object
+  Models.Requests:
+    properties:
+      Comment:
+        type: string
+      Name:
+        type: string
+      Referral_code:
+        type: string
+      company_id:
+        type: integer
+      customer_id:
+        type: integer
+      email:
+        type: string
+      first_name:
+        type: string
+      id_ride:
+        type: string
+      last_name:
+        type: string
+      passenger_id:
+        type: string
+      phone_number:
+        type: string
+      request_id:
+        type: integer
+      ride_id:
+        type: integer
+      saas_company_id:
+        type: integer
+      saas_office_id:
+        type: string
+      state:
+        type: string
+    type: object
+  Models.VehicleType:
+    properties:
+      complement:
+        type: string
+      createdAt:
+        type: string
+      designation:
+        type: string
+      id:
+        type: integer
+      isAvailable:
+        type: boolean
+      kmPrice:
+        type: integer
+      lat:
+        type: integer
+      logoVehicle:
+        type: string
+      long:
+        type: integer
+      maxPlace:
+        type: integer
+      minPrice:
+        type: integer
+      name:
+        type: string
+      pickupPrice:
+        type: integer
+      saas_officeID:
+        type: integer
+      saasCompanyID:
+        type: integer
+      typeCode:
+        type: integer
+      types:
+        type: string
+      updatedAt:
+        type: string
+      zip_code:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact:
+    email: salwa@craftfoundry.com
+    name: Yuso
+  description: This is a sample service for managing booking requests
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: rideCreation
+  version: "1.0"
+paths:
+  /companies/{saas_company_id}/{customer_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of companies related to front_end_user
+      parameters:
+      - description: id of the company
+        in: path
+        name: saas_company_id
+        required: true
+        type: integer
+      - description: id of the customer
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Company'
+      summary: Get details of companies
+      tags:
+      - companies
+  /companies/{saas_company_id}/{customer_id}/{company_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of companies related to front_end_users by id
+      parameters:
+      - description: id of the company
+        in: path
+        name: saas_company_id
+        required: true
+        type: string
+      - description: id of the customer
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      - description: id of the company
+        in: path
+        name: company_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Company'
+      summary: Get details of all companies
+      tags:
+      - companies
+  /customer/{saas_company_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of all customers
+      parameters:
+      - description: 'id of the company '
+        in: path
+        name: saas_company_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Customer'
+      summary: Get details of all customers
+      tags:
+      - customers
+  /customer/{saas_company_id}/{id_customer}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of all customers
+      parameters:
+      - description: 'id of the company '
+        in: path
+        name: saas_company_id
+        required: true
+        type: integer
+      - description: 'id of the customer '
+        in: path
+        name: id_customer
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Customer'
+      summary: Get details of all customers
+      tags:
+      - customers
+  /passenger/{customer_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of all passengers related to front_end_user
+      parameters:
+      - description: id of the customers
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Passengers'
+      summary: Get details of all passengers
+      tags:
+      - passengers
+  /passenger/{customer_id}/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of passengers related to front_end_user by id
+      parameters:
+      - description: id of the customers
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      - description: id of the passenger
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Passengers'
+      summary: Get details of all passengers
+      tags:
+      - passengers
+  /rides/{saas_company_id}/{customer_id}/{state}:
+    get:
+      consumes:
+      - application/json
+      description: Get description of upcoming and current rides
+      parameters:
+      - description: id of the company
+        in: path
+        name: saas_company_id
+        required: true
+        type: integer
+      - description: customer_id of the companies
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      - description: id of the companies
+        in: path
+        name: state
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Requests'
+      summary: Get details of all rides
+      tags:
+      - rides
+  /vehicule/{saas_officeID}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: id of the saas_office
+        in: path
+        name: saas_officeID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.VehicleType'
+      summary: Get
+      tags:
+      - VehicleType
+swagger: "2.0"
